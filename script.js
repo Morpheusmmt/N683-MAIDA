@@ -10,7 +10,7 @@ function gerarNumeroAleatorio() {
   
   // Função para gerar os números sorteados da Mega Sena
   function gerarNumerosSorteados() {
-    const numerosSorteados = [5, 18, 26, 23, 27, 56];
+    const numerosSorteados = [5, 18, 26, 23, 27, 20];
   
     while (numerosSorteados.length < 6) {
       const numeroAleatorio = gerarNumeroAleatorio();
