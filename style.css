@@ -1,0 +1,64 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #dfe9f3; /* Azul claro acinzentado */
+  }
+  
+  .container {
+    width: 500px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #6099be; /* Azul claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  h1 {
+    color: #103f70; /* Preto */
+  }
+  
+  h2 {
+    color: #1a1f68; /* Azul royal */
+  }
+  
+  .numero-input {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #07305c; /* Azul marinho escuro */
+  }
+  
+  input[type="number"] {
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff; /* Branco para inputs */
+    color: #333; /* Preto para texto */
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Azul royal */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .resultado {
+    margin-top: 30px;
+  }
+  
+  #mensagem {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #092c5a; /* Azul turquesa */
+  }
+  
+  #numeros-usuario, #numeros-sorteados {
+    font-style: italic;
+    color: #1d0f7a; 
+  }
+  
