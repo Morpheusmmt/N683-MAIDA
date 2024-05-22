@@ -2,10 +2,11 @@ body {
     font-family: sans-serif;
     text-align: center;
     background-color: #dfe9f3; /* Azul claro acinzentado */
+    margin: 0; /* Remove margin para melhor responsividade */
   }
   
   .container {
-    width: 500px;
+    width: 80%; /* Utiliza porcentagem para largura flexível */
     margin: 20px auto;
     border: 1px solid #ccc;
     padding: 20px;
@@ -32,7 +33,7 @@ body {
   }
   
   input[type="number"] {
-    width: 100px;
+    width: 100%; /* Utiliza 100% para largura flexível */
     padding: 5px;
     border: 1px solid #ccc;
     background-color: #fff; /* Branco para inputs */
@@ -57,8 +58,23 @@ body {
     color: #092c5a; /* Azul turquesa */
   }
   
-  #numeros-usuario, #numeros-sorteados {
+  #numeros-usuario,
+  #numeros-sorteados {
     font-style: italic;
-    color: #1d0f7a; 
+    color: #1d0f7a;
   }
+  
+  /* Media Queries para telas menores */
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 90%; /* Aumenta a largura em telas menores */
+    }
+    
+    input[type="number"] {
+      font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+  }
+  
+  /* Você pode adicionar mais media queries para tamanhos de tela diferentes */
   
