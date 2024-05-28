@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   text-align: center;
-  background-color: #dfe9f3;
+  background-color: #f5f5f5;
   margin: 0;
 }
 
@@ -10,16 +10,16 @@ body {
   margin: 20px auto;
   border: 1px solid #ccc;
   padding: 20px;
-  background-color: #6099be;
+  background-color: #e7f2fa ;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  color: #103f70;
+  color: #333;
 }
 
 h2 {
-  color: #1a1f68;
+  color: #6c757d;
 }
 
 .numero-input {
@@ -29,7 +29,7 @@ h2 {
 label {
   display: block;
   margin-bottom: 5px;
-  color: #07305c;
+  color: #333;
 }
 
 input[type="number"] {
@@ -42,7 +42,7 @@ input[type="number"] {
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #28a745 ;
   color: white;
   border: none;
   cursor: pointer;
@@ -55,11 +55,11 @@ button {
 #mensagem {
   font-weight: bold;
   margin-bottom: 10px;
-  color: #092c5a;
+  color: #ffc107;
 }
 
 #numeros-usuario,
 #numeros-sorteados {
   font-style: italic;
-  color: #1d0f7a;
+  color:  #dc3545;
 }
