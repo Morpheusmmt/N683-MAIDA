@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Mega Sena</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Gerador de Mega Sena</h1>
+
+  <div class="container">
+    <h2>Insira seus números de 1 a 60</h2>
+    <form id="formulario">
+      <div class="numero-input">
+        <label for="numero1">1º número:</label>
+        <input type="number" id="numero1" name="numero1" min="1" max="60" required>
+      </div>
+      <div class="numero-input">
+        <label for="numero2">2º número:</label>
+        <input type="number" id="numero2" name="numero2" min="1" max="60" required>
+      </div>
+      <div class="numero-input">
+        <label for="numero3">3º número:</label>
+        <input type="number" id="numero3" name="numero3" min="1" max="60" required>
+      </div>
+      <div class="numero-input">
+        <label for="numero4">4º número:</label>
+        <input type="number" id="numero4" name="numero4" min="1" max="60" required>
+      </div>
+      <div class="numero-input">
+        <label for="numero5">5º número:</label>
+        <input type="number" id="numero5" name="numero5" min="1" max="60" required>
+      </div>
+      <div class="numero-input">
+        <label for="numero6">6º número:</label>
+        <input type="number" id="numero6" name="numero6" min="1" max="60" required>
+      </div>
+      <button type="submit">Apostar</button>
+    </form>
+    <div class="resultado" id="resultado">
+      <h2>Resultado</h2>
+      <p id="mensagem"></p>
+      <p>Seus números: <span id="numeros-usuario"></span></p>
+      <p>Números sorteados: <span id="numeros-sorteados"></span></p>
+    </div>
+  </div>
+</body>
+</html>
+
+  <script>
+function gerarNumeroAleatorio() {
+    return Math.floor(Math.random() * 60) + 1;
+  }
+  
+  function verificarNumeroSorteado(numero, numerosSorteados) {
+    return numerosSorteados.includes(numero);
+  }
+  
+  function gerarNumerosSorteados() {
+    const numerosSorteados = [5, 18, 26, 23, 27, 20];
+  
+    while (numerosSorteados.length < 6) {
+      const numeroAleatorio = gerarNumeroAleatorio();
+  
+      if (!verificarNumeroSorteado(numeroAleatorio, numerosSorteados)) {
+        numerosSorteados.push(numeroAleatorio);
+      }
+    }
+  
+    return numerosSorteados;
+  }
+  
+  function ordenarArray(array) {
+    return array.sort((a, b) => a - b);
+  }
+  
+  function verificarAcertos(numerosUsuario, numerosSorteados) {
+    let acertos = 0;
+  
+    for (const numeroUsuario of numerosUsuario) {
+      if (numerosSorteados.includes(numeroUsuario)) {
+        acertos++;
+      }
+    }
+  
+    return acertos;
+  }
+  
+  function formatarNumeros(numeros) {
+    return numeros.join(', ');
+  }
+  
+  const formulario = document.getElementById('formulario');
+  const resultado = document.getElementById('resultado');
+  const mensagem = document.getElementById('mensagem');
+  const numerosUsuarioSpan = document.getElementById('numeros-usuario');
+  const numerosSorteadosSpan = document.getElementById('numeros-sorteados');
+  
+  formulario.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    const numerosUsuario = [];
+    for (let i = 1; i <= 6; i++) {
+      const inputNumero = document.getElementById(`numero${i}`);
+      const numero = parseInt(inputNumero.value);
+  
+      if (isNaN(numero) || numero < 1 || numero > 60) {
+        alert(`Número inválido no campo ${i}: ${inputNumero.value}`);
+        return;
+      }
+  
+      if (numerosUsuario.includes(numero)) {
+        alert(`Número repetido: ${numero}`);
+        return;
+      }
+  
+      numerosUsuario.push(numero);
+    }
+  
+    const numerosSorteados = gerarNumerosSorteados();
+  
+    const numerosUsuarioOrdenados = ordenarArray(numerosUsuario);
+    const numerosSorteadosOrdenados = ordenarArray(numerosSorteados);
+
+    const acertos = verificarAcertos(numerosUsuarioOrdenados, numerosSorteadosOrdenados);
+  
+    numerosUsuarioSpan.textContent = formatarNumeros(numerosUsuarioOrdenados);
+    numerosSorteadosSpan.textContent = formatarNumeros(numerosSorteadosOrdenados);
+  
+    if (acertos === 6) {
+      alert('Parabéns! Você acertou as 6 números e ganhou a SENA! Ficou rico!!!');
+    } else if (acertos === 5) {
+      alert('Você acertou 5 números e ganhou a QUINA! Agora já tem mais dinheiro');
+    } else if (acertos === 4) {
+      alert('Você acertou 4 números e ganhou a QUADRA, olha as coisas melhorando !');
+    } else if (acertos >= 3) {
+      alert(`Você acertou ${acertos} números!`);
+    } else {
+      alert('Infelizmente, você não acertou nenhum número e continua sem dinheiro.');
+    }
+  
+    resultado.style.display = 'block'; 
+  })
+  
+</script>
+<style>
+  body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #dfe9f3;
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #6099be;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #103f70;
+}
+
+h2 {
+  color: #1a1f68;
+}
+
+.numero-input {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #07305c;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.resultado {
+  margin-top: 30px;
+}
+
+#mensagem {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #092c5a;
+}
+
+#numeros-usuario,
+#numeros-sorteados {
+  font-style: italic;
+  color: #1d0f7a;
+}
+
+</style>
+</body>
+</html>
